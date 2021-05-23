@@ -12,7 +12,7 @@ default_args = {
     'retry_delay': timedelta(minutes=2)
 }
 
-with DAG('databricks_dag2',
+with DAG('databricks_dieg_dag',
     start_date=datetime(2021, 1, 1),
     schedule_interval='@daily',
     catchup=False,
@@ -24,10 +24,9 @@ with DAG('databricks_dag2',
         job_id=5
     )
 
-    helloworld2 = DatabricksRunNowOperator(
-        task_id='run_now2',
-        databricks_conn_id='Databricksdieg',
-        job_id=5
-    )
+    helloworld2 = BashOperator(
+            task_id='running_bash_bitch',
+            bash_command='echo donneeeeeeeeeeeeeeeee',
+        )
 
     helloworld1 >> helloworld2
